@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Local from "next/font/local";
-import {Root} from "@/components/index";
+import { Suspense } from "react";
+import { Root } from "@/components/index";
 
 const SN = Local({
   src: "../assets/fonts/sn.ttf",
@@ -15,14 +16,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${SN.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${SN.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <Root>
-          {children}
-        </Root>
+        <Suspense fallback={null}>
+          <Root>{children}</Root>
+        </Suspense>
       </body>
     </html>
   );
