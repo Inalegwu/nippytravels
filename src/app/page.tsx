@@ -1,7 +1,9 @@
+import { Menu } from "@base-ui/react/menu";
 import {
   AltArrowRight,
   CalendarMinimalistic,
   Document,
+  HamburgerMenu,
 } from "@solar-icons/react/ssr";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +12,7 @@ import logo from "@/assets/images/logo.png";
 export default function Home() {
   return (
     <div className="w-full h-screen flex flex-col bg-black/50">
-      <div className="w-full flex items-center justify-between px-10 py-5">
+      <div className="w-full flex items-center justify-between md:lg:xl:px-10 px-5 py-5">
         <Image src={logo} alt="logo" width={35} height={35} />
         <div className="hidden md:lg:xl:flex items-center justify-center gap-7">
           <Link href={`/?viewing=about`} className="hover:text-neutral-200">
@@ -19,6 +21,24 @@ export default function Home() {
           <Link href={`/?viewing=contact`} className="hover:text-neutral-200">
             Get In Touch
           </Link>
+        </div>
+        <div className="flex items-center justify-center md:lg:xl:hidden">
+          <Menu.Root>
+            <Menu.Trigger className="flex items-center justify-center bg-white rounded-sm text-black p-1">
+              <HamburgerMenu size={20} weight="Linear" />
+            </Menu.Trigger>
+            <Menu.Portal>
+              <Menu.Positioner
+                className="outline-hidden"
+                sideOffset={8}
+                align="start"
+              >
+                <Menu.Popup className="relative origin-(--transform-origin) border border-neutral-200 rounded-sm p-2 bg-white py-1 text-neutral-950 outline-hidden transition-[scale,opacity] duration-100 ease-out data-ending-style:scale-[0.98] data-ending-style:opacity-0 data-starting-style:scale-[0.98] data-starting-style:opacity-0">
+                  <Menu.Item render={<Link href={`/?viewing=form`}/>} className="menu-item">Add to Library</Menu.Item>
+                </Menu.Popup>{" "}
+              </Menu.Positioner>{" "}
+            </Menu.Portal>
+          </Menu.Root>
         </div>
         <Link
           href={`/?viewing=form`}

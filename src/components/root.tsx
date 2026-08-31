@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks";
 import { CloseCircle } from "@solar-icons/react/ssr";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 import { submitFormAction } from "@/lib/actions";
 import { type FormData, FormSchema } from "@/lib/validations";
 import { FormInput, Switch } from "./atoms";
@@ -53,7 +53,7 @@ export default function Root(props: RootProps) {
         <Dialog.Trigger ref={dialogTriggerRef} />
         <Dialog.Portal className="z-30">
           <Dialog.Backdrop className="fixed inset-0 min-h-dvh bg-black opacity-20 transition-opacity duration-150 data-ending-style:opacity-0 data-starting-style:opacity-0 supports-[-webkit-touch-callout:none]:absolute" />
-          <Dialog.Popup className="fixed top-1/2 left-1/2 -mt-8 flex flex-col w-[90%] md:lg:xl:w-4/6 overflow-hidden md:lg:xl:max-w-[calc(100vw-3rem)] md:lg:xl:max-h-[calc(90vh-3rem)] -translate-x-1/2 rounded-lg corner-squircle -translate-y-1/2 bg-neutral-50 text-neutral-950 border border-neutral-100 shadow shadow-black/20 transition-[scale,opacity] duration-100 ease-out data-ending-style:scale-[0.98] data-ending-style:opacity-0 data-starting-style:scale-[0.98] data-starting-style:opacity-0">
+          <Dialog.Popup className="fixed top-1/2 left-1/2 -mt-8 flex flex-col w-[90%] max-h-125 md:lg:xl:w-4/6 overflow-hidden md:lg:xl:max-w-[calc(100vw-3rem)] md:lg:xl:max-h-[calc(90vh-3rem)] -translate-x-1/2 rounded-lg corner-squircle -translate-y-1/2 bg-neutral-50 text-neutral-950 border border-neutral-100 shadow shadow-black/20 transition-[scale,opacity] duration-100 ease-out data-ending-style:scale-[0.98] data-ending-style:opacity-0 data-starting-style:scale-[0.98] data-starting-style:opacity-0">
             <div className="overflow-y-auto flex-1 py-6 px-6 pt-12 pb-8 md:px-10">
               <Switch value={activeView}>
                 {{
@@ -142,7 +142,7 @@ function PersonalInformation() {
 
   return (
     <div className="w-full h-full gap-3">
-      <div className="flex items-center justify-between gap-3 mb-2">
+      <div className="flex flex-col md:lg:xl:flex-row items-center justify-between gap-3 mb-2">
         <FormInput
           control={control}
           name="personalInfo.firstName"
@@ -159,7 +159,7 @@ function PersonalInformation() {
           label="Last Name"
         />
       </div>
-      <div className="flex items-center justify-between gap-3 mb-2">
+      <div className="flex flex-col md:lg:xl:flex-row items-center justify-between gap-3 mb-2">
         <FormInput
           control={control}
           name="personalInfo.dateOfBirth"
@@ -173,7 +173,7 @@ function PersonalInformation() {
           label="Phone Number"
         />
       </div>
-      <div className="flex items-center justify-between gap-3 mb-2">
+      <div className="flex flex-col md:lg:xl:flex-row items-center justify-between gap-3 mb-2">
         <FormInput
           control={control}
           name="personalInfo.passportNumber"
@@ -212,7 +212,7 @@ function ParentsInformation() {
 
   return (
     <div className="w-full h-full gap-3">
-      <div className="flex items-center justify-between gap-3 mb-2">
+      <div className="flex flex-col md:lg:xl:flex-row items-center justify-between gap-3 mb-2">
         <FormInput
           control={control}
           name="parents.fatherFullName"
@@ -225,7 +225,7 @@ function ParentsInformation() {
           type="date"
         />
       </div>
-      <div className="flex items-center justify-between gap-3 mb-2">
+      <div className="flex flex-col md:lg:xl:flex-row items-center justify-between gap-3 mb-2">
         <FormInput
           control={control}
           name="parents.motherFullName"
@@ -243,12 +243,11 @@ function ParentsInformation() {
 }
 
 function SpouseInformation() {
-  const { control} = MultiStep.useMultiStepForm<FormData>();
-
+  const { control } = MultiStep.useMultiStepForm<FormData>();
 
   return (
     <div className="w-full h-full gap-3">
-      <div className="flex items-center justify-between gap-3 mb-2">
+      <div className="flex flex-col md:lg:xl:flex-row items-center justify-between gap-3 mb-2">
         <FormInput
           control={control}
           name="spouse.spouseName"
