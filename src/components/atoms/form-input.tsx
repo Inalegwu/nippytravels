@@ -198,7 +198,7 @@ function DateInput<T extends FieldValues>({
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Positioner sideOffset={8} align="start">
-          <Popover.Popup className="relative flex h-(--popup-height,auto) w-(--popup-width,auto) max-w-125 flex-col gap-1 origin-(--transform-origin) bg-neutral-50 rounded-sm border border-solid border-neutral-200 outline-none shadow-[0.25rem_0.25rem_0] p-2 shadow-black/12 dark:shadow-none transition-[scale,opacity] duration-100 ease-out data-ending-style:scale-[0.98] data-ending-style:opacity-0 data-starting-style:scale-[0.98] data-starting-style:opacity-0">
+          <Popover.Popup className="relative flex h-(--popup-height,auto) w-(--popup-width,auto) max-w-125 flex-col gap-1 origin-(--transform-origin) bg-neutral-50 rounded-sm border border-solid border-neutral-200 outline-none shadow-[0.25rem_0.25rem_0] p-3 shadow-black/12 dark:shadow-none transition-[scale,opacity] duration-100 ease-out data-ending-style:scale-[0.98] data-ending-style:opacity-0 data-starting-style:scale-[0.98] data-starting-style:opacity-0">
             <DayPicker
               mode="single"
               selected={field.value as Date | undefined}
@@ -209,8 +209,11 @@ function DateInput<T extends FieldValues>({
               autoFocus
               classNames={{
                 chevron: `${defaultClassNames.chevron} fill-black`,
-                root: `${defaultClassNames.root} bg-neutral-200 border border-solid border-neutral-200 rounded-sm`,
-                today: `border-neutral-200 bg-black text-white rounded-full`,
+                today: `border-neutral-200 bg-black/5 text-neutral-950 rounded-full`,
+                selected:"bg-black text-white rounded-full",
+                day:`text-neutral-950 font-regular`,
+                month:`text-black font-medium`,
+                button_next:"fill-black"
               }}
             />
           </Popover.Popup>
