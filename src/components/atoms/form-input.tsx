@@ -207,7 +207,7 @@ function DateInput<T extends FieldValues>({
               }}
               disabled={disabled}
               autoFocus
-              className={{
+              classNames={{
                 chevron: `${defaultClassNames.chevron} fill-black`,
                 root: `${defaultClassNames.root} bg-neutral-200 border border-solid border-neutral-200 rounded-sm`,
                 today: `border-neutral-200 bg-black text-white rounded-full`,
